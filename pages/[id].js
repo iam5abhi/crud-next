@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
+import PrivateRoute from '../PrivateRoute/PrivateRoute'
 
 const Update = () => {
     const router = useRouter()
@@ -75,5 +76,5 @@ const Update = () => {
   );
 };
 
-export default Update;
+export default PrivateRoute(Update);
  

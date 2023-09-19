@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import React, { useState } from "react";
+import PrivateRoute from '../PrivateRoute/PrivateRoute'
 
 const Add = () => {
     const router = useRouter()
@@ -41,4 +42,4 @@ const Add = () => {
   );
 };
 
-export default Add;
+export default PrivateRoute(Add);

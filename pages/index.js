@@ -1,10 +1,14 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react"
+import PrivateRoute from '../PrivateRoute/PrivateRoute'
+import { auth, logout } from "../components/firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 
-export default function Home() {
+function Home() {
   const router = useRouter()
   const [data,setData]=useState([]);
+  const [user ] = useAuthState(auth);
 
   const GetData =()=>{
     fetch("/api/data/get", {
@@ -32,6 +36,10 @@ export default function Home() {
 
   return (
     <>
+     <div className="Add">
+    <h2>LOGO</h2>
+    <button type="button" onClick={()=>logout()} >Logout</button>
+    </div>
     <div className="Add">
     <h2>Data Table</h2>
     <button type="button" onClick={()=>router.push('/add')} >Add</button>
@@ -56,3 +64,4 @@ export default function Home() {
     </>
   )
 }
+export default PrivateRoute(Home)
